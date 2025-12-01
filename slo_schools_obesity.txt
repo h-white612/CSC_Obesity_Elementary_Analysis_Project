@@ -1,0 +1,7 @@
+School,Overweight_Obese_Percent,Economically_Disadvantaged_Percent,Students_Tested,Year
+Pacheco Elementary,25.0,60.0,80,2019
+Bishop's Peak Elementary,9.7,26.9,52,2019
+Los Ranchos Elementary,14.1,17.2,64,2019
+Hawthorne Elementary,24.0,52.0,50,2019
+C L Smith Elementary,24.2,50.0,62,2019
+
