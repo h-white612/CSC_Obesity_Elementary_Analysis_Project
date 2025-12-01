@@ -97,9 +97,9 @@ def analyze_economic_disparity(schools):
 
 ### Generate a detailed report for a specific school
 def get_school_report(schools, statistics, economic_analysis):
-    print("\n" + "=" * 60)
+
     print("INDIVIDUAL SCHOOL REPORT")
-    print("=" * 60)
+
 
     school_name = input("Enter school name: ").strip()
 
@@ -167,9 +167,9 @@ def get_school_report(schools, statistics, economic_analysis):
 
 ### Provide conclusions about economic disadvantage and obesity relationship
 def analyze_economic_relationship(economic_analysis):
-    print("\n" + "=" * 60)
+
     print("ECONOMIC DISADVANTAGE & OBESITY RELATIONSHIP")
-    print("=" * 60)
+
 
     high_data = economic_analysis['high_disadvantage']
     low_data = economic_analysis['low_disadvantage']
@@ -207,9 +207,9 @@ def analyze_economic_relationship(economic_analysis):
 ### Run interactive mode for user
 def interactive_mode(schools, statistics, economic_analysis):
     while True:
-        print("\n" + "=" * 60)
-        print("SLO COUNTY CHILDHOOD OBESITY ANALYSIS")
-        print("=" * 60)
+
+        print("\nSLO COUNTY CHILDHOOD OBESITY ANALYSIS")
+
         print("1. School specific report")
         print("2. Economic disadvantage relationship analysis")
         print("3. All schools summary")
