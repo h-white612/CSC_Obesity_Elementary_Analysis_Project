@@ -5,12 +5,6 @@
 #HAWTHORNE
 #C.L. SMITH
 
-"""
-Childhood Obesity Analysis for San Luis Obispo County Elementary Schools
-Student Name: [Your Name]
-Date: [Current Date]
-Course: [Your Course]
-"""
 
 from school import School
 
@@ -215,9 +209,7 @@ def generate_recommendations(statistics, risk_categories, economic_analysis, pri
 ### Displays comprehensive analysis results to console
 def display_results(schools, statistics, risk_categories, economic_analysis, recommendations):
 
-    print("=" * 50)
     print("SLO COUNTY CHILDHOOD OBESITY ANALYSIS")
-    print("=" * 50)
     print()
 
     # County-wide statistics
@@ -278,9 +270,7 @@ def display_results(schools, statistics, risk_categories, economic_analysis, rec
     print()
 
     # Recommendations
-    print("=" * 50)
     print("RECOMMENDATIONS:")
-    print("=" * 50)
     for key, recommendation in recommendations.items():
         print(f"✓ {recommendation}")
     print()
@@ -476,11 +466,10 @@ def interactive_mode(schools, statistics, economic_analysis, recommendations):
 
     while True:
         print("\n" + "=" * 60)
-        print("SLO COUNTY CHILDHOOD OBESITY ANALYSIS - INTERACTIVE MODE")
         print("=" * 60)
-        print("1. Get school-specific report")
-        print("2. View economic disadvantage relationship analysis")
-        print("3. View all schools summary")
+        print("1. School specific report")
+        print("2. Economic disadvantage relationship analysis")
+        print("3. All schools summary")
         print("4. View county-wide statistics")
         print("5. Exit interactive mode")
 
@@ -517,7 +506,6 @@ def main():
 
     input_filename = "slo_schools_obesity.txt"
 
-    print("STARTING PROGRAM")
 
     schools = load_data_from_file(input_filename)
 
@@ -532,7 +520,7 @@ def main():
     print(f"You typed: {test_input}")
 
     # If that works, start the full interactive mode
-    print("\n=== STARTING FULL INTERACTIVE MODE ===")
+    print("\nSTARTING FULL INTERACTIVE MODE")
 
     # Calculate ALL the required statistics
     statistics = calculate_county_statistics(schools)
@@ -547,5 +535,5 @@ def main():
 
 
 if __name__ == "__main__":
-    print("=== PROGRAM STARTING ===")
+    print("PROGRAM STARTING")
     main()
