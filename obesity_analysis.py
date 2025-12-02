@@ -25,7 +25,7 @@ def load_data_from_file(filename):
                     except ValueError as e:
                         print(f"Error processing line {line_num}: {line} - {e}")
 
-        print(f"✓ Successfully loaded {len(schools)} schools")
+        print(f"Successfully loaded {len(schools)} schools")
         return schools
 
     except FileNotFoundError:
