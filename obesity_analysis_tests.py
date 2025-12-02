@@ -1,13 +1,12 @@
 # Unit Tests
 import unittest
 from school import School
-from obesity_analysis import calculate_county_statistics, categorize_schools_by_risk, analyze_economic_disparity, identify_priority_schools, generate_recommendations
+from obesity_analysis import calculate_county_statistics, analyze_economic_disparity
+
 
 class TestSchoolObesityAnalysis(unittest.TestCase):
-    """Unit tests for the School class and analysis functions."""
 
     def test_school_initialization(self):
-        """Test that School objects are initialized correctly."""
         school = School("Test School", 35.5, 45.0, 100, 2019)
         self.assertEqual(school.school_name, "Test School")
         self.assertEqual(school.obesity_rate, 35.5)
@@ -16,7 +15,6 @@ class TestSchoolObesityAnalysis(unittest.TestCase):
         self.assertEqual(school.year, 2019)
 
     def test_calculate_obese_students(self):
-        """Test calculation of obese student count."""
         school = School("Test School", 40.0, 50.0, 100, 2019)
         self.assertEqual(school.calculate_obese_students(), 40)
 
@@ -24,7 +22,6 @@ class TestSchoolObesityAnalysis(unittest.TestCase):
         self.assertEqual(school2.calculate_obese_students(), 20)
 
     def test_get_risk_category(self):
-        """Test risk categorization logic."""
         # Test low risk
         school_low = School("Low School", 25.0, 30.0, 100, 2019)
         self.assertEqual(school_low.get_risk_category(), "Low")
@@ -42,7 +39,6 @@ class TestSchoolObesityAnalysis(unittest.TestCase):
         self.assertEqual(school_critical.get_risk_category(), "Critical")
 
     def test_is_economically_disadvantaged_school(self):
-        """Test economic disadvantage classification."""
         school_disadvantaged = School("Disadvantaged", 35.0, 55.0, 100, 2019)
         self.assertTrue(school_disadvantaged.is_economically_disadvantaged_school())
 
@@ -50,13 +46,11 @@ class TestSchoolObesityAnalysis(unittest.TestCase):
         self.assertFalse(school_not_disadvantaged.is_economically_disadvantaged_school())
 
     def test_compare_to_county_average(self):
-        """Test comparison to county average."""
         school = School("Test School", 40.0, 50.0, 100, 2019)
         comparison = school.compare_to_county_average(35.0)
         self.assertIn("above", comparison)
 
     def test_calculate_county_statistics(self):
-        """Test county statistics calculation."""
         schools = [
             School("School 1", 30.0, 40.0, 100, 2019),
             School("School 2", 40.0, 60.0, 100, 2019)
@@ -66,20 +60,21 @@ class TestSchoolObesityAnalysis(unittest.TestCase):
         self.assertEqual(stats["avg_obesity"], 35.0)
         self.assertEqual(stats["total_students"], 200)
 
-    def test_categorize_schools_by_risk(self):
-        """Test risk categorization function."""
+    def test_analyze_economic_disparity(self):
         schools = [
-            School("Low School", 25.0, 30.0, 100, 2019),
-            School("Critical School", 45.0, 70.0, 100, 2019)
+            School("High Disadvantage School", 40.0, 60.0, 100, 2019),
+            School("Low Disadvantage School", 20.0, 30.0, 100, 2019)
         ]
-        categories = categorize_schools_by_risk(schools)
-        self.assertEqual(len(categories["Low"]), 1)
-        self.assertEqual(len(categories["Critical"]), 1)
+        analysis = analyze_economic_disparity(schools)
+
+        self.assertEqual(analysis["high_disadvantage"]["count"], 1)
+        self.assertEqual(analysis["low_disadvantage"]["count"], 1)
+
+        self.assertEqual(analysis["high_disadvantage"]["avg_obesity"], 40.0)
+        self.assertEqual(analysis["low_disadvantage"]["avg_obesity"], 20.0)
+
+        self.assertEqual(analysis["disparity_factor"], 2.0)
 
 
 if __name__ == "__main__":
-    # Run the main program
-    main()
-
-    # Uncomment the line below to run unit tests
-    # unittest.main()
+    unittest.main()
